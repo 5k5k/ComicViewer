@@ -5,7 +5,7 @@ import java.util.*
 
 /**
  * @author 5k5k
- * Created 2022/5/20 at 9:16
+ * Created 2022/5/20
  */
 
 val imageExtensionNameArray = arrayOf("png", "jpg", "jpeg", "bmp")

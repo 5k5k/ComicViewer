@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/folder_fragment"
-        android:name="com.morladim.comicviewer.FolderFragment">
+        android:name="com.morladim.comicviewer.folder.FolderFragment">
         <action
             android:id="@+id/action_folder_to_viewer"
             app:destination="@+id/viewer_fragment"
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/viewer_fragment"
-        android:name="com.morladim.comicviewer.ViewerFragment" />
+        android:name="com.morladim.comicviewer.viewer.ViewerFragment" />
 </navigation>
 
 

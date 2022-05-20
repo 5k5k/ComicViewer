@@ -1,15 +1,15 @@
-package com.morladim.comicviewer
+package com.morladim.comicviewer.viewer
 
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.morladim.comicviewer.R
 import com.morladim.comicviewer.common.ui.BaseFragment
-import com.morladim.comicviewer.ui.ImageAdapter
 import java.io.File
 
 /**
  * @author 5k5k
- * Created 2022/5/20 at 8:45
+ * Created 2022/5/20
  */
 class ViewerFragment : BaseFragment(R.layout.fragment_viewer) {
 

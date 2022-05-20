@@ -1,4 +1,4 @@
-package com.morladim.comicviewer
+package com.morladim.comicviewer.folder
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,12 +6,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.morladim.comicviewer.FolderAdapter.FolderViewHolder
+import com.morladim.comicviewer.R
+import com.morladim.comicviewer.folder.FolderAdapter.FolderViewHolder
 import java.io.File
 
 /**
  * @author 5k5k
- * Created 2022/5/18 at 16:01
+ * Created 2022/5/18
  */
 class FolderAdapter : RecyclerView.Adapter<FolderViewHolder>() {
 

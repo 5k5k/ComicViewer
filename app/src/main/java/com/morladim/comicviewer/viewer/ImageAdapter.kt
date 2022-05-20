@@ -1,4 +1,4 @@
-package com.morladim.comicviewer.ui
+package com.morladim.comicviewer.viewer
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +11,7 @@ import java.io.File
 
 /**
  * @author 5k5k
- * Created 2022/5/19 at 9:49
+ * Created 2022/5/19
  */
 class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageHolder>() {
 
