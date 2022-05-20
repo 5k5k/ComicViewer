@@ -13,7 +13,7 @@ import java.io.File
 
 
 /**
- * @author gongw
+ * @author 5k5k
  * Created 2022/5/19 at 9:49
  */
 class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageHolder>() {

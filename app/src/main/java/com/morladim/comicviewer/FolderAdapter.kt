@@ -10,7 +10,7 @@ import com.morladim.comicviewer.FolderAdapter.FolderViewHolder
 import java.io.File
 
 /**
- * @author gongw
+ * @author 5k5k
  * Created 2022/5/18 at 16:01
  */
 class FolderAdapter : RecyclerView.Adapter<FolderViewHolder>() {
