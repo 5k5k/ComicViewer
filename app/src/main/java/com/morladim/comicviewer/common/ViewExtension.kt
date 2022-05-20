@@ -24,13 +24,12 @@ fun RecyclerView.addVerticalDecorator() {
 
 fun ImageView.loadImage(file: File) {
     Glide.with(this)
-//        .asBitmap()
+        .asBitmap()
         .load(file)
-        .diskCacheStrategy(DiskCacheStrategy.ALL)
+        .diskCacheStrategy(DiskCacheStrategy.NONE)
         .override(SIZE_ORIGINAL, SIZE_ORIGINAL)
         .format(DecodeFormat.PREFER_RGB_565)
-//        .skipMemoryCache(true)
+        .skipMemoryCache(true)
         .into(this)
-//        .clearOnDetach()
-
+        .clearOnDetach()
 }

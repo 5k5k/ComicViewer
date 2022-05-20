@@ -11,6 +11,8 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.morladim.comicviewer.R
+import com.morladim.comicviewer.common.Constants.viewerFragmentArgumentKey
+import com.morladim.comicviewer.common.LogUtils
 import com.morladim.comicviewer.common.addVerticalDecorator
 import com.morladim.comicviewer.common.subImageList
 import com.morladim.comicviewer.common.ui.BaseBindingFragment
@@ -26,6 +28,7 @@ import java.io.File
 class FolderFragment : BaseBindingFragment<FragmentFolderBinding>(R.layout.fragment_folder), FolderAdapter.FolderAdapterListener {
 
     private val viewModel by viewModels<FolderViewModel>()
+    override val enableCachedView = false
 
     private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
         if (isGranted) {
@@ -40,7 +43,7 @@ class FolderFragment : BaseBindingFragment<FragmentFolderBinding>(R.layout.fragm
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         requestPermission()
-        requireActivity().onBackPressedDispatcher.addCallback(this) {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             if (viewModel.currentIsRoot()) {
                 activity?.finish()
                 return@addCallback
@@ -69,7 +72,7 @@ class FolderFragment : BaseBindingFragment<FragmentFolderBinding>(R.layout.fragm
         binding!!.folderRecycler.adapter = adapter
         adapter.listener = this
         viewModel.currentData.observe(viewLifecycleOwner, {
-            adapter.setData(it)
+            adapter.data = it
             adapter.notifyDataSetChanged()
         })
     }
@@ -79,7 +82,7 @@ class FolderFragment : BaseBindingFragment<FragmentFolderBinding>(R.layout.fragm
     }
 
     override fun onStartClick(file: File) {
-        val bundle = bundleOf("images" to file.subImageList())
+        val bundle = bundleOf(viewerFragmentArgumentKey to file.subImageList())
         findNavController().navigate(R.id.action_folder_to_viewer, bundle)
     }
 }

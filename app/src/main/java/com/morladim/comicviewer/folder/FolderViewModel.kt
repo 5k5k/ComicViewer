@@ -19,7 +19,9 @@ class FolderViewModel @Inject constructor(private val folderRepository: FolderRe
     val currentData: MutableLiveData<List<File>> = MutableLiveData()
 
     fun init() {
-        currentData.postValue(folderRepository.getRoot())
+        if (currentPath == folderRepository.rootPath) {
+            currentData.postValue(folderRepository.getRoot())
+        }
     }
 
     fun onItemClick(file: File) {

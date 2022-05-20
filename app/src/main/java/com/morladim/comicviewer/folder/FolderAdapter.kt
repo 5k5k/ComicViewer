@@ -16,7 +16,8 @@ import java.io.File
  */
 class FolderAdapter : RecyclerView.Adapter<FolderViewHolder>() {
 
-    private var list: List<File>? = null
+    var data: List<File> = ArrayList()
+    var listener: FolderAdapterListener? = null
 
     inner class FolderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -25,10 +26,10 @@ class FolderAdapter : RecyclerView.Adapter<FolderViewHolder>() {
 
         init {
             itemView.setOnClickListener {
-                listener?.onItemClick(list!![layoutPosition])
+                listener?.onItemClick(data[layoutPosition])
             }
             button.setOnClickListener {
-                listener?.onStartClick(list!![layoutPosition])
+                listener?.onStartClick(data[layoutPosition])
             }
         }
 
@@ -37,26 +38,17 @@ class FolderAdapter : RecyclerView.Adapter<FolderViewHolder>() {
         }
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FolderViewHolder {
         return FolderViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_folder, parent, false))
     }
 
     override fun onBindViewHolder(holder: FolderViewHolder, position: Int) {
-        if (list != null) {
-            holder.bind(list!![position])
-        }
-    }
-
-    fun setData(l: List<File>?) {
-        list = l
+        holder.bind(data[position])
     }
 
     override fun getItemCount(): Int {
-        return if (list == null) 0 else list!!.size
+        return data.size
     }
-
-    var listener: FolderAdapterListener? = null
 
     interface FolderAdapterListener {
 

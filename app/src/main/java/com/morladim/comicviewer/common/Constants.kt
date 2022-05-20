@@ -6,4 +6,5 @@ package com.morladim.comicviewer.common
  */
 object Constants {
 
+    const val viewerFragmentArgumentKey = "images"
 }

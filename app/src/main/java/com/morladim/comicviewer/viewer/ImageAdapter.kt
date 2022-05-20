@@ -15,7 +15,7 @@ import java.io.File
  */
 class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageHolder>() {
 
-    var list: List<File>? = null
+    var data: List<File> = ArrayList()
 
     inner class ImageHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private var image: ImageView = itemView.findViewById(R.id.imageItem)
@@ -30,12 +30,10 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageHolder>() {
     }
 
     override fun onBindViewHolder(holder: ImageHolder, position: Int) {
-        if (list != null) {
-            holder.bind(list!![position])
-        }
+        holder.bind(data[position])
     }
 
     override fun getItemCount(): Int {
-        return if (list == null) 0 else list!!.size
+        return data.size
     }
 }
