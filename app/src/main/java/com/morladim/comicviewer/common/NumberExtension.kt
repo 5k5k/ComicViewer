@@ -1,4 +1,4 @@
-package com.morladim.comicoviewer.common
+package com.morladim.comicviewer.common
 
 import android.content.res.Resources
 

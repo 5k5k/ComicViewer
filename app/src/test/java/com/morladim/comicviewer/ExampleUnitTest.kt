@@ -1,4 +1,4 @@
-package com.morladim.comicoviewer
+package com.morladim.comicviewer
 
 import org.junit.Test
 
