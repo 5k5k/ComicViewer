@@ -1,4 +1,4 @@
-package com.morladim.comicoviewer.ui
+package com.morladim.comicviewer.ui
 
 import android.content.Context
 import android.graphics.Canvas

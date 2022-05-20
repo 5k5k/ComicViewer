@@ -1,4 +1,4 @@
-package com.morladim.comicoviewer.common
+package com.morladim.comicviewer.common
 
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
@@ -7,8 +7,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.Target.SIZE_ORIGINAL
-import com.morladim.comicoviewer.R
-import com.morladim.comicoviewer.ui.FolderDividerDecoration
+import com.morladim.comicviewer.R
+import com.morladim.comicviewer.ui.FolderDividerDecoration
 import java.io.File
 
 /**

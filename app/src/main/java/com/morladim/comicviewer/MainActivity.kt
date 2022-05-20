@@ -1,24 +1,16 @@
-package com.morladim.comicoviewer
+package com.morladim.comicviewer
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.graphics.drawable.Drawable
-import android.opengl.Visibility
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.view.View
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.ListPreloader.PreloadModelProvider
-import com.bumptech.glide.ListPreloader.PreloadSizeProvider
-import com.bumptech.glide.integration.recyclerview.RecyclerViewPreloader
-import com.bumptech.glide.util.FixedPreloadSizeProvider
-import com.morladim.comicoviewer.common.addVerticalDecorator
-import com.morladim.comicoviewer.ui.ImageAdapter
+import com.morladim.comicviewer.common.addVerticalDecorator
+import com.morladim.comicviewer.ui.ImageAdapter
 import java.io.File
 
 
