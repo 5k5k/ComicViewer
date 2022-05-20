@@ -3,7 +3,7 @@ package com.morladim.comicviewer.common
 import android.content.res.Resources
 
 /**
- * @author gongw
+ * @author 5k5k
  * Created 2022/5/19 at 8:06
  */
 val Int.dpToPx: Int

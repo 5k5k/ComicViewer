@@ -12,7 +12,7 @@ import com.morladim.comicviewer.ui.FolderDividerDecoration
 import java.io.File
 
 /**
- * @author gongw
+ * @author 5k5k
  * Created 2022/5/19 at 8:56
  */
 fun RecyclerView.addVerticalDecorator() {

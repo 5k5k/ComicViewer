@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable
 import androidx.recyclerview.widget.RecyclerView
 
 /**
- * @author gongw
+ * @author 5k5k
  * Created 2022/5/19 at 7:31
  */
 class FolderDividerDecoration(drawable: Drawable?, context: Context) : RecyclerView.ItemDecoration() {
