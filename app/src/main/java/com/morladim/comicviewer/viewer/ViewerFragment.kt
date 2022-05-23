@@ -63,6 +63,7 @@ class ViewerFragment : BaseBindingFragment<FragmentViewerBinding>(R.layout.fragm
                                 val percentage = (100f * offset / (range - extent).toFloat())
 
                                 viewerViewModel.updateProcess(offset, percentage)
+                                println("ccc")
                             }
                         }
                     })
