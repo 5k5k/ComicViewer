@@ -1,6 +1,7 @@
 package com.morladim.comicviewer
 
 import android.app.Application
+import android.os.StrictMode
 import dagger.hilt.android.HiltAndroidApp
 
 /**
@@ -9,5 +10,26 @@ import dagger.hilt.android.HiltAndroidApp
  */
 @HiltAndroidApp
 class ComicViewerApplication : Application() {
-
+    override fun onCreate() {
+        super.onCreate()
+        if (BuildConfig.DEBUG) {
+            StrictMode.setThreadPolicy(
+                StrictMode.ThreadPolicy.Builder()
+                    .detectAll()
+                    .penaltyLog()
+                    .detectCustomSlowCalls()
+//                    .penaltyDeath()
+                    .build()
+            )
+            StrictMode.setVmPolicy(
+                StrictMode.VmPolicy.Builder()
+                    .detectAll()
+                    .detectLeakedSqlLiteObjects()
+                    .detectLeakedClosableObjects()
+                    .penaltyLog()
+//                    .penaltyDeath()
+                    .build()
+            )
+        }
+    }
 }

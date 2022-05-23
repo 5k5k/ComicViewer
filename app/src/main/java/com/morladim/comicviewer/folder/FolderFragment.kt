@@ -12,7 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.morladim.comicviewer.R
 import com.morladim.comicviewer.common.Constants.viewerFragmentArgumentKey
-import com.morladim.comicviewer.common.LogUtils
+import com.morladim.comicviewer.common.Constants.viewerFragmentArgumentPathKey
 import com.morladim.comicviewer.common.addVerticalDecorator
 import com.morladim.comicviewer.common.subImageList
 import com.morladim.comicviewer.common.ui.BaseBindingFragment
@@ -82,7 +82,7 @@ class FolderFragment : BaseBindingFragment<FragmentFolderBinding>(R.layout.fragm
     }
 
     override fun onStartClick(file: File) {
-        val bundle = bundleOf(viewerFragmentArgumentKey to file.subImageList())
+        val bundle = bundleOf(viewerFragmentArgumentKey to file.subImageList(), viewerFragmentArgumentPathKey to file.absolutePath)
         findNavController().navigate(R.id.action_folder_to_viewer, bundle)
     }
 }
