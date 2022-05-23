@@ -14,11 +14,26 @@ class ViewerViewModel @Inject constructor(private val viewHistoryRepository: Vie
     var hasInitScroll = false
     private lateinit var path: String
     lateinit var viewHistory: LiveData<ViewHistoryEntity?>
+    var setHistoryTimes = 0
+    private val maxAllowSetHistoryTimes = 1
 
     fun init(path: String) {
         hasInitScroll = false
         this.path = path
         viewHistory = getHistory()
+        setHistoryTimes = 0
+    }
+
+    fun hasSetHistory(): Boolean {
+        if (!hasInitScroll) {
+            return false
+        }
+        return (setHistoryTimes >= maxAllowSetHistoryTimes)
+    }
+
+    fun setHistory() {
+        setHistoryTimes++
+        hasInitScroll = true
     }
 
     private fun getHistory(): LiveData<ViewHistoryEntity?> {

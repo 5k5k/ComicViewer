@@ -38,37 +38,40 @@ class ViewerFragment : BaseBindingFragment<FragmentViewerBinding>(R.layout.fragm
             if (it.containsKey(viewerFragmentArgumentPathKey)) {
                 val path = it.getString(viewerFragmentArgumentPathKey)
                 path?.let {
-                    viewerViewModel.init(path)
-                    viewerViewModel.viewHistory.observe(viewLifecycleOwner, { history ->
-                        if (history != null && !viewerViewModel.hasInitScroll) {
-                            binding!!.imageRecycler.viewTreeObserver.addOnGlobalLayoutListener {
-                                val range = binding!!.imageRecycler.computeVerticalScrollRange()
-                                if (history.scroll > range ) {//|| viewerViewModel.hasInitScroll
-                                    return@addOnGlobalLayoutListener
-                                }
-                                viewerViewModel.hasInitScroll = true
-                                val manager = binding!!.imageRecycler.layoutManager as LinearLayoutManager
-                                manager.scrollToPositionWithOffset(0, -history.scroll)
-                            }
-                        }
-                    })
-
-                    binding!!.imageRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                            if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                                val offset = recyclerView.computeVerticalScrollOffset()
-                                val extent = recyclerView.computeVerticalScrollExtent()
-                                val range = recyclerView.computeVerticalScrollRange()
-
-                                val percentage = (100f * offset / (range - extent).toFloat())
-
-                                viewerViewModel.updateProcess(offset, percentage)
-                                println("ccc")
-                            }
-                        }
-                    })
+                    initRecyclerView(path)
                 }
             }
         }
+    }
+
+    private fun initRecyclerView(path: String) {
+        viewerViewModel.init(path)
+        viewerViewModel.viewHistory.observe(viewLifecycleOwner, { history ->
+            if (history != null && !viewerViewModel.hasInitScroll) {
+                binding!!.imageRecycler.viewTreeObserver.addOnGlobalLayoutListener {
+                    val range = binding!!.imageRecycler.computeVerticalScrollRange()
+                    if (history.scroll > range || viewerViewModel.hasSetHistory()) {
+                        return@addOnGlobalLayoutListener
+                    }
+                    viewerViewModel.setHistory()
+                    val manager = binding!!.imageRecycler.layoutManager as LinearLayoutManager
+                    manager.scrollToPositionWithOffset(0, -history.scroll)
+                }
+            }
+        })
+
+        binding!!.imageRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    val offset = recyclerView.computeVerticalScrollOffset()
+                    val extent = recyclerView.computeVerticalScrollExtent()
+                    val range = recyclerView.computeVerticalScrollRange()
+
+                    val percentage = (100f * offset / (range - extent).toFloat())
+
+                    viewerViewModel.updateProcess(offset, percentage)
+                }
+            }
+        })
     }
 }
