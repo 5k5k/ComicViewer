@@ -8,12 +8,12 @@ import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.Target.SIZE_ORIGINAL
 import com.morladim.comicviewer.R
-import com.morladim.comicviewer.ui.FolderDividerDecoration
+import com.morladim.comicviewer.common.ui.FolderDividerDecoration
 import java.io.File
 
 /**
  * @author 5k5k
- * Created 2022/5/19 at 8:56
+ * Created 2022/5/19
  */
 fun RecyclerView.addVerticalDecorator() {
     val dividerDrawable = ContextCompat.getDrawable(this.context, R.drawable.folder_divider)
@@ -24,13 +24,12 @@ fun RecyclerView.addVerticalDecorator() {
 
 fun ImageView.loadImage(file: File) {
     Glide.with(this)
-//        .asBitmap()
+        .asBitmap()
         .load(file)
-        .diskCacheStrategy(DiskCacheStrategy.ALL)
+        .diskCacheStrategy(DiskCacheStrategy.NONE)
         .override(SIZE_ORIGINAL, SIZE_ORIGINAL)
         .format(DecodeFormat.PREFER_RGB_565)
-//        .skipMemoryCache(true)
+        .skipMemoryCache(true)
         .into(this)
-//        .clearOnDetach()
-
+        .clearOnDetach()
 }

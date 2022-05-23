@@ -1,14 +1,16 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.morladim.comicviewer"
-        minSdk 21
+        applicationId 'com.morladim.comicviewer'
+        minSdk 24
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -29,18 +31,46 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        dataBinding true
+    }
 }
 
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'com.google.android.material:material:1.6.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
+    //app startup
+    implementation "androidx.startup:startup-runtime:1.1.1"
+
+    //hilt
+    implementation "com.google.dagger:hilt-android:$rootProject.hiltVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$rootProject.hiltVersion"
+
+    //navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
+
+    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
+    // When using Kotlin.
+    kapt 'androidx.hilt:hilt-compiler:1.0.0'
+
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
+
+    // for by viewModels
+    implementation 'androidx.fragment:fragment-ktx:1.4.1'
+
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.5.31"
+
+    implementation 'com.google.android.material:material:1.7.0-alpha01'
+
+    //glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     implementation 'com.github.bumptech.glide:okhttp3-integration:4.11.0'

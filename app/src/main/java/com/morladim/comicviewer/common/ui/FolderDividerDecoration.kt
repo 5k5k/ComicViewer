@@ -1,4 +1,4 @@
-package com.morladim.comicviewer.ui
+package com.morladim.comicviewer.common.ui
 
 import android.content.Context
 import android.graphics.Canvas
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 /**
  * @author 5k5k
- * Created 2022/5/19 at 7:31
+ * Created 2022/5/19
  */
 class FolderDividerDecoration(drawable: Drawable?, context: Context) : RecyclerView.ItemDecoration() {
 
