@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ComicViewer</string>
-    <string name="default_image_description"/>
+    <string name="app_name">连看</string>
+    <string name="default_image_description" />
     <string name="start">Start</string>
 </resources>

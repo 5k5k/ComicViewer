@@ -15,6 +15,7 @@ import com.morladim.comicviewer.common.Constants.viewerFragmentArgumentKey
 import com.morladim.comicviewer.common.Constants.viewerFragmentArgumentPathKey
 import com.morladim.comicviewer.common.addVerticalDecorator
 import com.morladim.comicviewer.common.subImageList
+import com.morladim.comicviewer.common.subfolderList
 import com.morladim.comicviewer.common.ui.BaseBindingFragment
 import com.morladim.comicviewer.databinding.FragmentFolderBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -78,7 +79,11 @@ class FolderFragment : BaseBindingFragment<FragmentFolderBinding>(R.layout.fragm
     }
 
     override fun onItemClick(file: File) {
-        viewModel.onItemClick(file)
+        if (file.subfolderList().isEmpty()) {
+            onStartClick(file)
+        } else {
+            viewModel.onItemClick(file)
+        }
     }
 
     override fun onStartClick(file: File) {
